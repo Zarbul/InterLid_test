@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 django = "*"
 jinja2 = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.9"
