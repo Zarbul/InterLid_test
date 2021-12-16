@@ -10,6 +10,7 @@ from src.parking.models import Parking, ParkingOrder
 
 
 class ParkingCreateView(PermissionRequiredMixin, generic.CreateView):
+    login_url = '/auth/login'
     permission_required = 'parking.add_parking'
     model = Parking
     template_name = 'parking/parking_add.html'
@@ -24,6 +25,7 @@ class ParkingListView(generic.ListView):
 
 
 class ParkingUpdateView(PermissionRequiredMixin, generic.UpdateView):
+    login_url = '/auth/login'
     permission_required = 'parking.change_parking'
     template_name = 'parking/parking_add.html'
     model = Parking
@@ -32,6 +34,7 @@ class ParkingUpdateView(PermissionRequiredMixin, generic.UpdateView):
 
 
 class ParkingDeleteView(PermissionRequiredMixin, generic.DeleteView):
+    login_url = '/auth/login'
     permission_required = 'parking.delete_parking'
     template_name = 'parking/parking_delete.html'
     model = Parking
