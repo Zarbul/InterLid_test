@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Добавление сотрудника
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+{% endblock %}
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+{% endblock %}
+{% block content %}
+    <h3>Добавление сотрудника</h3>
+
+    <form action="" class="mt-5 register-form" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mt-4 d-block w-100">Submit</button>
+        <a class="button" href="{%  url 'parking:list' %}">Отмена</a>
+    </form>
+{% endblock %}

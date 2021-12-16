@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Base Title
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+<div class="main-wrapper">
+    {% block header %}
+        <header class="main-header position-absolute w-100">
+            <nav class="navbar navbar-expand-xl navbar-dark sticky-header">
+                <ul class="nav col-12 col-md-auto justify-content-center main-menu">
+                    <li><a href="{% url 'parking:list' %}" class="nav-link">Домой</a></li>
+                    <li>
+                        <div class="action-btns text-end me-5 me-lg-0 d-none d-md-block d-lg-block">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'users:logout' %}" class="btn btn-primary">Exit</a>
+                            {% else %}
+                                <a href="{% url 'users:login' %}"
+                                   class="btn btn-link text-decoration-none me-2">Sign In</a>
+                                | <a href="{% url 'users:register_manager' %}" class="btn btn-primary">Sign Up how Manager</a>
+                                | <a href="{% url 'users:register_employer' %}" class="btn btn-primary">Sign Up how Employer</a>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+
+
+            </nav>
+        </header>
+    {% endblock %}
+
+{% block content %}
+    Content
+{% endblock %}
+</div>
+</body>
+</html>

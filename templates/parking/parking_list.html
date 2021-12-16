@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Parking list
+{% endblock %}
+
+{% block content %}
+    <h3>Parking list:</h3>
+    <a href="{% url 'parking:add_parking' %}">Add parking</a>
+    <br>
+
+    <div>
+        <table border="1">
+            <tr>
+                <th>Parking name</th>
+                {#                <th>start date</th>#}
+                {#                <th>end date</th>#}
+                                <th>used</th>
+                <th>...</th>
+            </tr>
+            {% for parking in parkings %}
+                <tr>
+                    <td>{{ parking.name }}</td>
+                    {#                    <td>{{ parking.start_date }}</td>#}
+                    {#                    <td>{{ parking.end_date }}</td>#}
+                    <td>{{ parking.used }}</td>
+                    <td>
+                        <a href='{% url 'parking:edit_parking' parking.pk %}'>изменить</a>
+                        <br>
+                        <a href='{% url 'parking:delete_parking' parking.pk %}'>удалить</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <h3>Booking parking place:</h3>
+    <a href="{% url 'parking:booking_parking' %}">Booking parking place</a>
+    <table border="1">
+    <tr>
+        <th>Order name</th>
+        <th>start date</th>
+        <th>end date</th>
+        <th>who use</th>
+        <th>...</th>
+    </tr>
+    {% for order in orders %}
+        <tr>
+            <td>{{ order.place }}</td>
+            <td>{{ order.start_date }}</td>
+            <td>{{ order.end_date }}</td>
+            <td>{{ order.employer }}</td>
+            {#                <td>#}
+            {#                    <a href='{% url 'parking:edit_parking' parking.pk %}'>изменить</a>#}
+            {#                    <br>#}
+            {#                    <a href='{% url 'parking:delete_parking' parking.pk %}'>удалить</a>#}
+            {#                </td>#}
+        </tr>
+    {% endfor %}
+    <br>
+
+{% endblock %}
